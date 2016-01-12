@@ -1,0 +1,16 @@
+---
+- name: Get list of .yml files in git repo
+  command: "find {{ include_vars_dir_paths }} -name '*.yml'"
+  register: include_vars_files
+  when: include_vars_dir_paths is defined and include_vars_dir_paths != ""
+
+- name: Include variables from .yml files found in path
+  include_vars: "{{ item }}"
+  when: include_vars_files is defined and include_vars_files.stdout != ""
+  with_items: "{{ include_vars_files.stdout_lines }}"
+
+- name: Print included .yml files
+  debug:
+    msg: "Attempted to include {{ item }}"
+  when: include_vars_files is defined and include_vars_files.stdout != ""
+  with_items: "{{ include_vars_files.stdout_lines }}"

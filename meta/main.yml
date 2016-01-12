@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: Jeremy Litten
+  description: Includes all YAML files under given path(s).
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: EL
+    versions:
+    - all
+  galaxy_tags: ['vars']
+dependencies: []
