@@ -4,11 +4,12 @@
     path: "{{ item }}"
     state: directory
   with_items: "{{ include_vars_dir_paths }}"
+  when: include_vars_dir_paths is defined and include_vars_dir_paths.0 != ""
 
 - name: Get string list of directory paths
   command: "echo '{{ include_vars_dir_paths|join(' ') }}'"
   register: include_vars_string_cmd
-  when: include_vars_dir_paths is defined and include_vars_dir_paths != ""
+  when: include_vars_dir_paths is defined and include_vars_dir_paths.0 != ""
 
 - name: Get list of .yml files
   command: "find {{ include_vars_string_cmd.stdout }} -name '*.yml'"
