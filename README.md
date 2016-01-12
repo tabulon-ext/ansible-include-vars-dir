@@ -10,9 +10,9 @@ Includes all YAML files under given path(s).
 
 Available variables are listed below, along with default values:
 
-	# List of local paths (separated by spaces) to search
-	# for YAML files that will be included as Ansible vars.
-	include_vars_dir_paths: ""
+	# List of local paths to search for YAML files
+	# that will be included as Ansible vars.
+	include_vars_dir_paths: []
 
 ## Dependencies
 
