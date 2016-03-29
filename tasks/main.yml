@@ -12,11 +12,11 @@
   when: include_vars_dir_paths is defined
 
 - name: Get list of .yml files
-  command: "find {{ include_vars_string_cmd.stdout }} -name '*.yml'"
+  command: "find {{ include_vars_string_cmd.stdout }} -name '*.{{ include_vars_file_extension }}'"
   register: include_vars_find_cmd
   when: include_vars_string_cmd is defined and include_vars_string_cmd.stdout != ""
 
-- name: Include variables from .yml files found in path
+- name: Include variables from files found in path
   include_vars: "{{ item }}"
   with_items: "{{ include_vars_find_cmd.stdout_lines | default([]) }}"
   when: include_vars_find_cmd is defined

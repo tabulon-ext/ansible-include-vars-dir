@@ -2,3 +2,6 @@
 # List of local paths to search for YAML files
 # that will be included as Ansible vars.
 include_vars_dir_paths: []
+
+# Extension of files to include.
+include_vars_file_extension: "yml"
