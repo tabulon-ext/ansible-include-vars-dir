@@ -5,3 +5,6 @@ include_vars_dir_paths: []
 
 # Extension of files to include.
 include_vars_file_extension: "yml"
+
+# Exclude files matching this name
+#include_vars_dir_exclude_name: "requirements.yml"
