@@ -12,14 +12,9 @@
   when: include_vars_dir_paths is defined
 
 - name: Get list of .yml files
-  command: "find {{ include_vars_string_cmd.stdout }} -name '*.{{ include_vars_file_extension }}'"
+  command: "find {{ include_vars_string_cmd.stdout }} -name '*.{{ include_vars_file_extension }}' -and ! ( -name '{{ include_vars_dir_exclude_name | default(' ') }}' )"
   register: include_vars_find_cmd
-  when: include_vars_string_cmd is defined and include_vars_string_cmd.stdout != "" and include_vars_dir_exclude_name is not defined
-
-- name: Get list of .yml files with excluded name
-  command: "find {{ include_vars_string_cmd.stdout }} -name '*.{{ include_vars_file_extension }}' -and ! ( -name '{{ include_vars_dir_exclude_name }}' )"
-  register: include_vars_find_cmd
-  when: include_vars_string_cmd is defined and include_vars_string_cmd.stdout != "" and include_vars_dir_exclude_name is defined
+  when: include_vars_string_cmd is defined and include_vars_string_cmd.stdout != ""
 
 - name: Include variables from files found in path
   include_vars: "{{ item }}"

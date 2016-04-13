@@ -20,6 +20,10 @@ Available variables are listed below, along with default values:
     # Exclude files matching this name
     #include_vars_dir_exclude_name: "requirements.yml"
 
+    # Directory depth to used search for files
+    # 1 = only files directly in include_vars_dir_paths
+    include_vars_dir_depth: 1
+
 ## Dependencies
 
 ## Example Playbook

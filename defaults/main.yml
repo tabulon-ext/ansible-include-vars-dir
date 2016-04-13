@@ -8,3 +8,7 @@ include_vars_file_extension: "yml"
 
 # Exclude files matching this name
 #include_vars_dir_exclude_name: "requirements.yml"
+
+# Directory depth to used search for files
+# 1 = only files directly in include_vars_dir_paths
+include_vars_dir_depth: 1
